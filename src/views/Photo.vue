@@ -30,13 +30,9 @@ import entries from '@/content/photo/index.js'
 <style scoped>
 .photo-page {
   font-family: 'Fragment Mono', monospace;
-  //padding-top: 10px;
-  //padding-bottom: 10px;
 }
 
 .header-text {
-  //display: flex;
-  //flex-direction: column;
   text-align: center;
 }
 

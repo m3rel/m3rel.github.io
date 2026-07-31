@@ -21,7 +21,6 @@ defineProps({
 .photo-strip {
   display: flex;
   overflow-x: auto;
-  //gap: 10px;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;
 }
