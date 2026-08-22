@@ -4,6 +4,7 @@ import photo2 from '@/assets/photos/jacobindehout/Untitled-1_02.jpg'
 import photo3 from '@/assets/photos/jacobindehout/Untitled-1_03.jpg'
 import photo4 from '@/assets/photos/jacobindehout/Untitled-1_04.jpg'
 import photo5 from '@/assets/photos/jacobindehout/Untitled-1_05.jpg'
+//import photo6 from '@/assets/photos/jacobindehout/polaroid_small.png'
 
 
 export default [

@@ -4,6 +4,8 @@ import Writing from '../views/Writing.vue'
 import WritingPost from '../views/WritingPost.vue'
 import Zines from '../views/Zines.vue'
 import Photo from "@/views/Photo.vue";
+import Video from '@/views/Video.vue'
+import WatchVideo from '@/views/WatchVideo.vue'
 
 
 const router = createRouter({
@@ -14,6 +16,8 @@ const router = createRouter({
     { path: '/writing/:slug', component: WritingPost, name: 'writing-post' },
     { path: '/zines', component: Zines, name: 'zines' },
     { path: '/photo', component: Photo, name: 'photo' },
+    { path: '/video', component: Video, name: 'video' },
+    { path: '/video/:id', component: WatchVideo, name: 'watch' },
   ],
 })
 
