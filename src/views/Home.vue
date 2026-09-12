@@ -1,5 +1,5 @@
 <script setup>
-import DashedBox from "@/components/DashedBox.vue"
+import DashedBox from '@/components/DashedBox.vue'
 </script>
 
 <template>
@@ -11,7 +11,10 @@ import DashedBox from "@/components/DashedBox.vue"
     <DashedBox text="photo 💾" slug="photo" />
     <DashedBox text="development 💻" slug="development" />
     <DashedBox text="about me 🐞" slug="about" />
+    <DashedBox text="todo" slug="todo" />
   </div>
+
+  <p>this website is verymuch a work in progress :-)</p>
 </template>
 
 <style scoped>
@@ -22,5 +25,7 @@ import DashedBox from "@/components/DashedBox.vue"
   grid-gap: 10px;
   background-color: #fff;
   color: #444;
+  max-width: 800px;
+  margin: 0 auto;
 }
 </style>

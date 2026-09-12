@@ -1,25 +1,23 @@
-<script setup></script>
+<script setup>
+defineProps({
+  title: { type: String, required: true },
+})
+</script>
 
 <template>
-  <div class="photo-page">
-    <div class="header-row">
-      <RouterLink to="/" class="back-link">← home</RouterLink>
-      <h1 class="header-text">zines</h1>
-    </div>
+  <div class="header">
+    <RouterLink to="/" class="back-link">← back</RouterLink>
+    <h1 class="header-text">{{title}}</h1>
   </div>
 </template>
 
 <style scoped>
-.photo-page {
-  font-family: 'Fragment Mono', monospace;
+.header {
+  font-family: Menlo, monospace;
 }
 
 .header-text {
   text-align: center;
-}
-
-.header-row {
-  margin-bottom: 10px;
 }
 
 .back-link {

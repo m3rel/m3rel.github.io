@@ -6,6 +6,7 @@ import Zines from '../views/Zines.vue'
 import Photo from "@/views/Photo.vue";
 import Video from '@/views/Video.vue'
 import WatchVideo from '@/views/WatchVideo.vue'
+import TodoList from '@/views/TodoList.vue'
 
 
 const router = createRouter({
@@ -18,6 +19,7 @@ const router = createRouter({
     { path: '/photo', component: Photo, name: 'photo' },
     { path: '/video', component: Video, name: 'video' },
     { path: '/video/:id', component: WatchVideo, name: 'watch' },
+    { path: '/todo', component: TodoList, name: 'todo'}
   ],
 })
 
