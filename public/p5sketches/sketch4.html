@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script
+</head>
+<body>
+
+<script>
+  let img;
+  let grayImg;
+
+  function preload() {
+    img = loadImage("img/1.jpg");
+  }
+
+  function setup() {
+    createCanvas(1200, 500);
+    grayImg = img.get();
+    background(0, 255, 255);
+
+    noLoop();
+  }
+
+  function draw() {
+
+    img.filter(GRAY);
+    img.loadPixels();
+
+    for (let y = 1; y < img.height - 1; y++) {
+      for (let x = 1; x < img.width - 1; x++) {
+
+        if (y % 2 === 0 && x % 2 === 0) {
+          let idx = 4 * (y * img.width + x);
+          img.pixels[idx]     = 0;
+          img.pixels[idx + 1] = random(255);
+          img.pixels[idx + 2] = random(255);
+          img.pixels[idx + 3] = 255;
+        }
+      }
+    }
+    img.updatePixels();
+
+    img.resize(0, 1000);
+    image(img, 0, 0);
+
+    grayImg.resize(0, 800);
+    grayImg.filter(GRAY);
+    grayImg.loadPixels();
+
+    for (let y = 1; y < grayImg.height - 1; y++) {
+      for (let x = 1; x < grayImg.width - 1; x++) {
+
+        if (y % 2 === 0 && x % 2 === 0) {
+          let idx = 4 * (y * grayImg.width + x);
+          grayImg.pixels[idx]     = 0;
+          grayImg.pixels[idx + 1] = random(255);
+          grayImg.pixels[idx + 2] = random(255);
+          grayImg.pixels[idx + 3] = 50;
+        }
+      }
+    }
+    grayImg.updatePixels();
+    image(grayImg, 230, 70);
+
+    // save("image.png");
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  <style>
+      body { margin: 0; overflow: hidden; }
+  </style>
+</head>
+<body>
+<script>
+  let pause = false;
+
+  function setup() {
+    createCanvas(400, 400)
+    background('#0000FF')
+  }
+
+  function draw() {
+    push();
+    translate(mouseX, mouseY);
+    text('0', -20, -20);
+    ellipse(20, -20, 30, 20);
+    pop();
+
+    let x = random(0, 400);
+    let y = random(0, 400);
+    text('<3', x, y);
+  }
+
+  function mousePressed(){
+    if(pause==false){
+      noLoop();
+      pause=true;
+    }else{
+      loop();
+      pause = false;
+    }
+  }
+</script>
+</body>
+</html>

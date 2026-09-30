@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+
+<body>
+<script>
+
+  let img;
+  let pix;
+
+  function preload() {
+    img = loadImage("img/sheep.jpg");
+  }
+
+  function setup() {
+    createCanvas(1000, 700);
+    pix = img.get();
+
+    image(img, 0, 0);
+    image(pix, 500, 0);
+
+    noStroke();
+  }
+
+  function draw() {
+    if (frameCount % 6 === 0) {
+      glitch();
+    }
+  }
+
+  function glitch() {
+
+    let gw = floor(random(40, 200));
+    let gh = floor(random(10, 80));
+    let gx = floor(random(0, 500 - gw));
+    let gy = floor(random(0, 700 - gh));
+
+    let sizes = [5, 10, 20, 25];
+    let block = random(sizes);
+
+    let doTint = random(1) < 0.4;
+
+    for (let y = gy; y < gy + gh; y += block) {
+      for (let x = gx; x < gx + gw; x += block) {
+
+        let sx = constrain(x + block / 2, 0, pix.width - 1);
+        let sy = constrain(y + block / 2, 0, pix.height - 1);
+        let c = pix.get(sx, sy); //returns rgba
+
+        if (doTint) {
+          fill(c[0] + random(-80, 80), c[1] + random(-80, 80), c[2] + random(-80, 80));
+        } else {
+          fill(c[0], c[1], c[2]);
+        }
+        rect(500 + x, y, block, block);
+      }
+    }
+  }
+
+</script>
+</body>
+</html>
