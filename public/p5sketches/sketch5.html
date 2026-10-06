@@ -49,6 +49,21 @@
   const nrOfSquares = 20
   const size = 90;
 
+  saveBtn.addEventListener('click', function () {
+    canvas.toBlob(function (blob) {
+
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'squares.png';
+      a.click();
+      URL.revokeObjectURL(url);
+
+    }, 'image/png');
+
+    //canvas.toDataURL("image/jpeg")
+  })
+
   fileInput.addEventListener('change', function () {
     const file = fileInput.files[0];
     img = new Image();
@@ -57,7 +72,6 @@
   });
 
   colorInput.addEventListener('input',  draw); //geen haakjes achter draw
-
 
   function draw() {
       if (img === null) {
