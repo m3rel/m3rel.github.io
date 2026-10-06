@@ -4,19 +4,35 @@
   <div class="dev-page">
     <div class="header-row">
       <RouterLink to="/" class="back-link">← back</RouterLink>
-      <h1 class="header-text">development 💻</h1>
+      <h1 class="header-text">code 💻</h1>
     </div>
 
     <div class="sketch-grid">
       <RouterLink to="/development/sketch1" class="sketch-tile">1</RouterLink>
       <RouterLink to="/development/sketch2" class="sketch-tile">2</RouterLink>
-    <RouterLink to="/development/sketch3" class="sketch-tile">3</RouterLink>
-    <RouterLink to="/development/sketch4" class="sketch-tile">4</RouterLink>
+      <RouterLink to="/development/sketch3" class="sketch-tile">3</RouterLink>
+      <RouterLink to="/development/sketch4" class="sketch-tile">4</RouterLink>
+      <RouterLink to="/development/sketch5" class="sketch-tile">5</RouterLink>
+      <RouterLink to="/development/sketch6" class="sketch-tile">6</RouterLink>
     </div>
+
+    <iframe
+      src="https://petracoding.github.io/pinterest/board.html?link=hahahahmerel/waag-inspo/&hideHeader=1&hideFooter=1&transparent=1"
+      class="board-frame"
+    ></iframe>
   </div>
 </template>
 
 <style scoped>
+.board-frame {
+  display: block; /* iframes are inline by default, which blocks auto margins */
+  width: 90%; /* or e.g. 1200px */
+  max-width: 1200px; /* optional cap on big screens */
+  height: 80vh; /* iframes need an explicit height too */
+  margin: 0 auto; /* centers it horizontally */
+  border: none;
+}
+
 .dev-page {
   font-family: 'Fragment Mono', monospace;
 }
@@ -71,5 +87,4 @@ h1 {
   text-decoration: none;
   flex-shrink: 0;
 }
-
 </style>

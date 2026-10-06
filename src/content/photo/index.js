@@ -18,8 +18,8 @@ export default [
     photos: [photo6, photo7, photo8, photo9, photo10, photo11],
     date: '24.09.2026',
     caption:
-      'zie, ik loop nu stage op een hele leuke plek! maar niet echt bevorderlijk voor mijn postuur (zie foto2 midden). ik teken nog wel soms',
-  },
+      'druk met stage (slide 2 midden ter visualisering), maar ik teken soms nog wel 🐟'
+    },
   {
     photos: [photo1, photo2, photo3, photo4, photo5],
     date: '31.07.2026',

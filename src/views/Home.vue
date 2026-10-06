@@ -5,16 +5,16 @@ import DashedBox from '@/components/DashedBox.vue'
 <template>
   <div class="wrapper">
     <DashedBox text="writing 📒" slug="writing" />
-    <DashedBox text="zines 🧃" slug="zines" />
+<!--    <DashedBox text="zines 🧃" slug="zines" />-->
     <DashedBox text="art ✂️" slug="art" />
     <DashedBox text="video 📹" slug="video" />
     <DashedBox text="photo 💾" slug="photo" />
-    <DashedBox text="development 💻" slug="development" />
-    <DashedBox text="about me 🐞" slug="about" />
+    <DashedBox text="code 💻" slug="development" />
+<!--    <DashedBox text="about me 🐞" slug="about" />-->
     <DashedBox text="todo" slug="todo" />
   </div>
 
-  <p>this website is verymuch a work in progress :-)</p>
+<!--  <p>this website is verymuch a work in progress :-)</p>-->
 </template>
 
 <style scoped>
