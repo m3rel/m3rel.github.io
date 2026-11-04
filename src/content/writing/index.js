@@ -1,11 +1,11 @@
 //moet slug moet overeenkomen met post filename in content
 export default [
-  {
-    slug: 'jacob-in-de-hout',
-    title: 'de bomen zullen blijven bestaan',
-    date: '29.07.2026',
-    preview: 'needs some work',
-  },
+  // {
+  //   slug: 'jacob-in-de-hout',
+  //   title: 'de bomen zullen blijven bestaan',
+  //   date: '29.07.2026',
+  //   preview: 'needs some work',
+  // },
 
   {
     slug: 'wanneerthuis',
