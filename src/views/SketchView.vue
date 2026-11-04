@@ -10,6 +10,8 @@ const sketchSizes = {
   sketch2: { width: 400, height: 600 },
   sketch3: { width: 1000, height: 700 },
   sketch4: { width: 1200, height: 500 },
+  sketch9: { width: 1900, height: 700 },
+  sketch10: { width: 900, height: 600 },
 }
 
 const currentSize = computed(() => {

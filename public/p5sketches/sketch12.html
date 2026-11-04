@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<input id="text" value="Waag" oninput="draw()">
+<input id="res" type="range" min="20" max="200" value="60" oninput="draw()">
+<input id="thr" type="range" min="0" max="255" value="128" oninput="draw()">
+<br>
+<canvas id="c" style="width: 600px; image-rendering: pixelated;"></canvas>
+<script>
+  const c = document.getElementById('c');
+  const ctx = c.getContext('2d');
+
+  function draw() {
+    const w = +document.getElementById('res').value;
+    const t = +document.getElementById('thr').value;
+    c.width = w;
+    c.height = w / 2;
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, c.width, c.height);
+    ctx.fillStyle = 'black';
+    ctx.font = `bold ${w / 3}px sans-serif`;
+    ctx.textBaseline = 'middle';
+    ctx.fillText(document.getElementById('text').value, 2, c.height / 2);
+
+    const img = ctx.getImageData(0, 0, c.width, c.height);
+    const d = img.data;
+    for (let i = 0; i < d.length; i += 4) {
+      const v = d[i] < t ? 0 : 255;
+      d[i] = d[i + 1] = d[i + 2] = v;
+      d[i + 3] = 255;
+    }
+    ctx.putImageData(img, 0, 0);
+  }
+  draw();
+</script>
+
+</body>
+</html>

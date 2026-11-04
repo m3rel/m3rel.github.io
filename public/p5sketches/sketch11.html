@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <style>
+    .pixelated {
+        filter: url(#pixelate)
+    }
+
+    .dither {
+        filter: url(#dither)
+    }
+
+  </style>
+</head>
+
+<body>
+<svg width="0" height="0" aria-hidden="true">
+  <filter id="pixelate" x="0" y="0">
+    <feFlood x="4" y="4" width="2" height="2"/>
+    <feComposite width="10" height="10"/>
+    <feTile result="tiles"/>
+    <feComposite in="SourceGraphic" in2="tiles" operator="in"/>
+    <feMorphology operator="dilate" radius="10"/>
+  </filter>
+</svg>
+
+<svg width="0" height="0" aria-hidden="true">
+  <filter id="dither" primitiveUnits="objectBoundingBox">
+    <feTurbulence type="fractalNoise" baseFrequency="3.71" />
+    <feDisplacementMap in="SourceGraphic" scale="0.2" />
+    <feBlend in2="SourceGraphic" />
+  </filter>
+</svg>
+
+<img src="img/2.jpg" class="pixelated">
+<img src="img/2.jpg" class="dither"></img>
+
+<p>pixelate svg filter</p>
+
+
+</body>
+</html>

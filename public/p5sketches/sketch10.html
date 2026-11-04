@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<canvas id="c" width="900" height="600" style="background:#fff"></canvas>
+
+
+
+<script>
+  const canvas = document.getElementById('c');
+  const ctx = canvas.getContext('2d');
+
+  let points = [];
+  let closed = false;
+
+  canvas.addEventListener('click', e => {
+    if (closed) return;
+    const r = canvas.getBoundingClientRect();
+    points.push({ x: e.clientX - r.left, y: e.clientY - r.top });
+    draw();
+  });
+
+  canvas.addEventListener('dblclick', () => {
+    if (closed) return;
+    points.splice(-2);
+    closed = true;
+    draw();
+  });
+
+  window.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { closed = true; draw(); }
+    if (e.key === 'Escape') { points = []; closed = false; draw(); }
+  });
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (points.length === 0) return;
+
+    const pts = closed ? resample(points, 8) : points;
+
+    ctx.beginPath();
+    ctx.moveTo(pts[0].x, pts[0].y);
+    for (const p of pts.slice(1)) ctx.lineTo(p.x, p.y);
+    if (closed) ctx.closePath();
+    ctx.fillStyle = closed ? '#e8553d' : 'transparent';
+    ctx.fill();
+    ctx.strokeStyle = '#000';
+    ctx.stroke();
+
+    // tijdelijk: laat de punten zien
+    if (closed) {
+      ctx.fillStyle = '#000';
+      for (const p of pts) ctx.fillRect(p.x - 1.5, p.y - 1.5, 3, 3);
+    }
+  }
+
+  function resample(pts, step = 3) {
+    const out = [];
+    const n = pts.length;
+    let carry = 0; // restafstand die we nog moeten lopen tot het volgende punt
+
+    for (let i = 0; i < n; i++) {
+      const a = pts[i];
+      const b = pts[(i + 1) % n]; // % n zorgt dat het laatste punt terug naar het eerste loopt
+      const dx = b.x - a.x;
+      const dy = b.y - a.y;
+      const len = Math.hypot(dx, dy);
+
+      let d = carry;
+      while (d < len) {
+        const t = d / len;
+        out.push({ x: a.x + dx * t, y: a.y + dy * t });
+        d += step;
+      }
+      carry = d - len; // wat er "over" is meenemen naar het volgende segment
+    }
+    return out;
+  }
+
+</script>
+
+</body>
+</html>

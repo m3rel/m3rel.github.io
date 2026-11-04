@@ -20,4 +20,11 @@ export default [
     date: '12.09.2026',
     preview: 'over loslaten en groeien ofzo',
   },
+
+  {
+    slug: '01112026',
+    title: 'gedeelde eenzaamheid brengt samen',
+    date: '01.11.2026',
+    preview: 'kamperen met vreemden',
+  },
 ]

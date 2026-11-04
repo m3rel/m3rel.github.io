@@ -27,8 +27,6 @@ import HeaderRow from '@/components/HeaderRow.vue'
 
 const videos = [
   { id: 'hAVSqG60Vdg', title: '001 _ op de fiets naar texel', description: 'ye' },
-  { id: 'hAVSqG60Vdg', title: '001 _ op de fiets naar texel', description: 'ye' },
-  { id: 'hAVSqG60Vdg', title: '001 _ op de fiets naar texel', description: 'ye' },
 ]
 </script>
 

@@ -14,6 +14,12 @@
       <RouterLink to="/development/sketch4" class="sketch-tile">4</RouterLink>
       <RouterLink to="/development/sketch5" class="sketch-tile">5</RouterLink>
       <RouterLink to="/development/sketch6" class="sketch-tile">6</RouterLink>
+      <RouterLink to="/development/sketch7" class="sketch-tile">7</RouterLink>
+      <RouterLink to="/development/sketch8" class="sketch-tile">8</RouterLink>
+      <RouterLink to="/development/sketch9" class="sketch-tile">9</RouterLink>
+      <RouterLink to="/development/sketch10" class="sketch-tile">10</RouterLink>
+      <RouterLink to="/development/sketch11" class="sketch-tile">11</RouterLink>
+      <RouterLink to="/development/sketch12" class="sketch-tile">12</RouterLink>
     </div>
 
     <iframe

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+      canvas {
+          display: block;
+          max-width: 100%;
+          max-height: 80vh;
+      }
+  </style>
+</head>
+<body>
+<h1>sketch 8</h1>
+<div class="container">
+  <label>kies een foto:</label>
+  <input type="file" id="file" accept="image/*">
+
+  <div>
+    <label>stipgrootte: <input type="range" id="levels" min="1" max="20" value="4"> <span id="levelsVal">4</span></label>
+    <label>stippen: <input type="color" id="dotColor" value="#000000"></label>
+    <label>achtergrond: <input type="color" id="bgColor" value="#ffffff"></label>
+    <button id="save">save canvas</button>
+  </div>
+
+  <canvas id="c"></canvas>
+</div>
+
+<script>
+  const file = document.getElementById('file');
+  const saveBtn = document.getElementById('save');
+  const levelsInput = document.getElementById('levels');
+  const levelsVal = document.getElementById('levelsVal');
+  const dotColorInput = document.getElementById('dotColor');
+  const bgColorInput = document.getElementById('bgColor');
+
+  const canvas = document.getElementById('c');
+  const ctx = canvas.getContext('2d');
+
+  let source = null; // originele foto op volle resolutie
+
+  // Floyd–Steinberg, zwart/wit, past ImageData direct aan
+  function dither(imgData) {
+    const w = imgData.width;
+    const h = imgData.height;
+    const data = imgData.data;
+
+    const gray = new Float32Array(w * h);
+    for (let i = 0; i < w * h; i++) {
+      gray[i] = 0.299 * data[i * 4] + 0.587 * data[i * 4 + 1] + 0.114 * data[i * 4 + 2];
+    }
+
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        const i = y * w + x;
+        const old = gray[i];
+        const nw = old < 128 ? 0 : 255;
+        const err = old - nw;
+
+        data[i * 4] = data[i * 4 + 1] = data[i * 4 + 2] = nw;
+
+        if (x + 1 < w)         gray[i + 1]     += err * 7 / 16;
+        if (y + 1 < h) {
+          if (x > 0)           gray[i + w - 1] += err * 3 / 16;
+          gray[i + w]     += err * 5 / 16;
+          if (x + 1 < w)       gray[i + w + 1] += err * 1 / 16;
+        }
+      }
+    }
+  }
+
+  function render() {
+    if (!source) return;
+
+    const size = parseInt(levelsInput.value, 10); // stipgrootte in pixels
+    const W = source.width;
+    const H = source.height;
+
+    // canvas blijft even groot als de foto
+    canvas.width = W;
+    canvas.height = H;
+
+    // klein rooster: 1 cel = 1 stip
+    const cols = Math.ceil(W / size);
+    const rows = Math.ceil(H / size);
+    const small = document.createElement('canvas');
+    small.width = cols;
+    small.height = rows;
+    const sctx = small.getContext('2d');
+    sctx.imageSmoothingQuality = 'high';
+    sctx.drawImage(source, 0, 0, W / size, H / size);
+
+    const imgData = sctx.getImageData(0, 0, cols, rows);
+    dither(imgData);
+    const d = imgData.data;
+
+    ctx.fillStyle = bgColorInput.value;
+    ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = dotColorInput.value;
+
+    for (let y = 0; y < rows; y++) {
+      for (let x = 0; x < cols; x++) {
+        if (d[(y * cols + x) * 4] === 255) continue; // wit = niets tekenen
+        if (size === 1) {
+          ctx.fillRect(x, y, 1, 1);
+        } else {
+          ctx.beginPath();
+          ctx.arc(x * size + size / 2, y * size + size / 2, size / 2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+    }
+  }
+
+  file.addEventListener('change', function () {
+    const f = file.files[0];
+    if (!f) return;
+
+    const img = new Image();
+    img.onload = function () {
+      source = document.createElement('canvas');
+      source.width = img.width;
+      source.height = img.height;
+      source.getContext('2d').drawImage(img, 0, 0);
+      URL.revokeObjectURL(img.src);
+      render();
+    };
+    img.src = URL.createObjectURL(f);
+  });
+
+  levelsInput.addEventListener('input', function () {
+    levelsVal.textContent = levelsInput.value;
+    render();
+  });
+
+  saveBtn.addEventListener('click', function () {
+    canvas.toBlob(function (blob) {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'weave.png';
+      a.click();
+      URL.revokeObjectURL(url);
+    }, 'image/png');
+  });
+
+  dotColorInput.addEventListener('input', render);
+  bgColorInput.addEventListener('input', render);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+
+  <style>
+      :root {
+          --color-1: chartreuse;
+          --color-2: magenta;
+          --color-3: cyan;
+          --color-4: black;
+
+          --aura-size: 200%;
+          --aura-speed: 15s;
+
+          --aura-1: var(--color-1);
+          --aura-2: var(--color-2);
+          --aura-3: var(--color-3);
+          --aura-4: var(--color-4);
+      }
+
+      body {
+          background: #181818;
+          text-align: center;
+          color: white;
+          text-shadow: 0 0 1ch var(--color-3), 0 0 4ch var(--color-2);
+          animation: aura var(--aura-speed) linear infinite;
+          background-size: var(--aura-size) var(--aura-size);
+          background-image: radial-gradient(transparent 0, transparent 20%),
+          radial-gradient(at 62% 9%, var(--aura-1) 0px, transparent 50%),
+          radial-gradient(at 69% 60%, var(--aura-2) 0px, transparent 50%),
+          radial-gradient(at 24% 89%, var(--aura-3) 0px, transparent 50%),
+          radial-gradient(at 51% 77%, var(--aura-4) 0px, transparent 50%),
+          radial-gradient(at 78% 92%, var(--aura-1) 0px, transparent 50%);
+      }
+
+      .wrapper {
+          padding: 5em;
+          width: 1900px;
+          height: 700px;
+      }
+      h1 {
+          font-size: 10rem;
+          font-weight: lighter;
+          line-height: 1;
+          margin: 0;
+      }
+
+      @keyframes aura {
+          0% {
+              background-position: center, 50% 50%, 30% 100%, 100% 10%, 23% 23%, 0% 80%;
+          }
+          33.333% {
+              background-position: center, 10% 75%, 40% 80%, 60% 20%, 43% 23%, 16% 30%;
+          }
+          66.666% {
+              background-position: center, 25% 35%, 80% 50%, 10% 10%, 66% 5%, 30% 0%;
+          }
+          100% {
+              background-position: center, 50% 50%, 30% 100%, 100% 10%, 23% 23%, 0% 80%;
+          }
+      }
+  </style>
+</head>
+
+<body>
+<div class='aura wrapper'>
+</div>
+</body>
+</html>
