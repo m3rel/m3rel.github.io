@@ -1,8 +1,5 @@
 <template>
-
   <HeaderRow :title="yum"></HeaderRow>
-
-
 
   <div class="video-page">
     <div class="header-row">
@@ -26,7 +23,8 @@ import VideoEntry from '@/components/VideoEntry.vue'
 import HeaderRow from '@/components/HeaderRow.vue'
 
 const videos = [
-  { id: 'hAVSqG60Vdg', title: '001 _ op de fiets naar texel', description: 'ye' },
+  { id: 'rShkKecJW-M', title: 'kamperen', description: '(met vreemden)' },
+  { id: 'hAVSqG60Vdg', title: 'op de fiets naar texel', description: 'met hanna' },
 ]
 </script>
 
