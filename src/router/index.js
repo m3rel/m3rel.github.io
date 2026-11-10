@@ -8,6 +8,7 @@ import Video from '@/views/Video.vue'
 import WatchVideo from '@/views/WatchVideo.vue'
 import TodoList from '@/views/TodoList.vue'
 import Development from '@/views/Development.vue'
+import Fish from '@/views/fish.vue'
 
 
 
@@ -28,6 +29,7 @@ const router = createRouter({
       name: 'sketch-view',
       component: () => import('@/views/SketchView.vue'),
     },
+    {  path: '/fish', component: Fish, name: 'fish' }
   ],
 })
 
