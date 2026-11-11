@@ -1,19 +1,19 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
+import fish0 from '@/assets/photos/fish/0.png'
+import fish1 from '@/assets/photos/fish/1.png'
+import fish2 from '@/assets/photos/fish/2.png'
+import fish3 from '@/assets/photos/fish/3.png'
+import fish4 from '@/assets/photos/fish/4.png'
+import fish5 from '@/assets/photos/fish/5.png'
+
 const container = ref(null)
 const fishEls = ref([]) // template refs, filled by v-for
 
 // ---- Settings ----
 const FISH_COUNT = 12
-const FISH_IMAGES = [
-  new URL('@/assets/photos/fish/0.png', import.meta.url).href,
-  new URL('@/assets/photos/fish/1.png', import.meta.url).href,
-  new URL('@/assets/photos/fish/2.png', import.meta.url).href,
-  new URL('@/assets/photos/fish/3.png', import.meta.url).href,
-  new URL('@/assets/photos/fish/4.png', import.meta.url).href,
-  new URL('@/assets/photos/fish/5.png', import.meta.url).href,
-]
+const FISH_IMAGES = [fish0, fish1, fish2, fish3, fish4, fish5]
 
 const FLEE_RADIUS = 200
 const PUSH = 1.2
