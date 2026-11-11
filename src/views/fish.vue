@@ -148,7 +148,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div ref="container" class="container" @mousemove="onMouseMove" @mouseleave="onMouseLeave">
-    <img class="bg" src="@/assets/photos/fish/bg.jpg" alt="background" @load="init" />
+    <img class="bg" src="@/assets/photos/fish/bg3.png" alt="background" @load="init" />
     <img
       v-for="f in fishList"
       :key="f.id"
