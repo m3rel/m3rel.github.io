@@ -22,6 +22,8 @@
       <RouterLink to="/development/sketch12" class="sketch-tile">12</RouterLink>
       <RouterLink to="/development/sketch13" class="sketch-tile">13</RouterLink>
       <RouterLink to="/fish" class="sketch-tile">14</RouterLink>
+      <RouterLink to="/room" class="sketch-tile">15</RouterLink>
+      <RouterLink to="/computer" class="sketch-tile">16</RouterLink>
     </div>
 
     <iframe

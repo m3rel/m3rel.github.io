@@ -9,6 +9,8 @@ import WatchVideo from '@/views/WatchVideo.vue'
 import TodoList from '@/views/TodoList.vue'
 import Development from '@/views/Development.vue'
 import Fish from '@/views/fish.vue'
+import Room from '@/views/room.vue'
+import Computer from '@/views/Computer.vue'
 
 
 
@@ -29,7 +31,9 @@ const router = createRouter({
       name: 'sketch-view',
       component: () => import('@/views/SketchView.vue'),
     },
-    {  path: '/fish', component: Fish, name: 'fish' }
+    {  path: '/fish', component: Fish, name: 'fish' },
+    { path: '/room' , component: Room, name: 'room' },
+    { path: '/computer', component: Computer, name: 'computer' },
   ],
 })
 

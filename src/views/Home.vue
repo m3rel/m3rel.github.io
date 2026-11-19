@@ -6,7 +6,7 @@ import DashedBox from '@/components/DashedBox.vue'
   <div class="wrapper">
     <DashedBox text="writing 📒" slug="writing" />
 <!--    <DashedBox text="zines 🧃" slug="zines" />-->
-    <DashedBox text="art ✂️" slug="art" />
+<!--    <DashedBox text="art ✂️" slug="art" />-->
     <DashedBox text="video 📹" slug="video" />
     <DashedBox text="photo 💾" slug="photo" />
     <DashedBox text="code 💻" slug="development" />
