@@ -3,6 +3,13 @@ import mainImg from '@/assets/photos/computer/main.png'
 import frame1 from '@/assets/photos/computer/layer4.png'
 import frame2 from '@/assets/photos/computer/layer8.png'
 import frame3 from '@/assets/photos/computer/layer9.png'
+import frame4 from '@/assets/photos/computer/blue.png'
+import frame5 from '@/assets/photos/computer/orange.png'
+import frame6 from '@/assets/photos/computer/pink1.png'
+import frame7 from '@/assets/photos/computer/pink2.png'
+import frame8 from '@/assets/photos/computer/white.png'
+import frame9 from '@/assets/photos/computer/yellow.png'
+
 import star1 from '@/assets/photos/computer/star1.png'
 import star2 from '@/assets/photos/computer/star2.png'
 import star3 from '@/assets/photos/computer/star3.png'
@@ -47,8 +54,62 @@ const frames = [
     w: 405,
     dur: 6,
     delay: -4,
-    star: { src: star3, x: 1585, y: 970, w: 265 },
   },
+  {
+    src: frame4,
+    alt: 'frame 4',
+    x: 1010,
+    y: 510,
+    w: 397,
+    dur: 6,
+    delay: -2,
+  },
+  {
+    src: frame5,
+    alt: 'frame 5',
+    x: 950,
+    y: 180,
+    w: 409,
+    dur: 6,
+    delay: -4,
+  },
+  {
+    src: frame6,
+    alt: 'frame 6',
+    x: 490,
+    y: 380,
+    w: 478,
+    dur: 6,
+    delay: 0,
+  },
+  {
+    src: frame7,
+    alt: 'frame 7',
+    x: 470,
+    y: 1400,
+    w: 678,
+    dur: 6,
+    delay: 0,
+  },
+  {
+    src: frame8,
+    alt: 'frame 8',
+    x: 580,
+    y: 960,
+    w: 455,
+    dur: 6,
+    delay: -2,
+  },
+  {
+    src: frame9,
+    alt: 'frame 9',
+    x: 1020,
+    y: 1000,
+    w: 455,
+    dur: 6,
+    delay: -6,
+  }
+
 ]
 
 // which frame is hovered (index), or null
@@ -69,40 +130,38 @@ const style = (f) => ({
 })
 </script>
 
-
-  <template>
-    <div class="scene">
-      <!-- behind: the moddable elements -->
-      <div
-        v-for="(f, i) in frames"
-        :key="f.alt"
-        class="layer glitch"
-        :style="style(f)"
-        @mouseenter="hovered = i"
-        @mouseleave="hovered = null"
-      >
-        <img :src="f.src" :alt="f.alt" class="base" />
-        <span class="tint" aria-hidden="true"></span>
-        <span class="ghost red" aria-hidden="true"></span>
-        <span class="ghost cyan" aria-hidden="true"></span>
-      </div>
-
-      <!-- stars: positioned like the frames, shown when their frame is hovered -->
-      <img
-        v-for="(f, i) in frames"
-        :key="'star-' + f.alt"
-        :src="f.star.src"
-        alt=""
-        aria-hidden="true"
-        class="star"
-        :class="{ on: hovered === i }"
-        :style="pos(f.star)"
-      />
-
-      <!-- on top: the illustration with transparent frame holes -->
-      <img :src="mainImg" alt="computer" class="main" />
+<template>
+  <div class="scene">
+    <!-- behind: the moddable elements -->
+    <div
+      v-for="(f, i) in frames"
+      :key="f.alt"
+      class="layer glitch"
+      :style="style(f)"
+      @mouseenter="hovered = i"
+      @mouseleave="hovered = null"
+    >
+      <img :src="f.src" :alt="f.alt" class="base" />
+      <span class="tint" aria-hidden="true"></span>
+      <span class="ghost red" aria-hidden="true"></span>
+      <span class="ghost cyan" aria-hidden="true"></span>
     </div>
 
+<!--    &lt;!&ndash; stars: positioned like the frames, shown when their frame is hovered &ndash;&gt;-->
+<!--    <img-->
+<!--      v-for="(f, i) in frames"-->
+<!--      :key="'star-' + f.alt"-->
+<!--      :src="f.star.src"-->
+<!--      alt=""-->
+<!--      aria-hidden="true"-->
+<!--      class="star"-->
+<!--      :class="{ on: hovered === i }"-->
+<!--      :style="pos(f.star)"-->
+<!--    />-->
+
+    <!-- on top: the illustration with transparent frame holes -->
+    <img :src="mainImg" alt="computer" class="main" />
+  </div>
 </template>
 
 <style scoped>
